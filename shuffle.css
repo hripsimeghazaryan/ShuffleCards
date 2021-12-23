@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 750px;
+}
+
+.card-item {
+    width: 250px;
+    height: 250px;
+    background-color: yellow;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.container-margin {
+    margin: 5px;
+}
+
+button {
+    width: 100px;
+    height: 25px;
+    border: none;
+}
+
+.shuffle-button {
+    background-color: #000;
+    color: #fff;
+}
+
+.shuffle-button:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
