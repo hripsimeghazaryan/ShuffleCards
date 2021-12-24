@@ -14,14 +14,19 @@ const insertCards = () => {
 
 const shuffleColors = () => {
     const container = document.querySelector(".card-container");
-    const n = allColors.length - 1;
-    let last = container.lastChild;
-    const lastColor = last.style.backgroundColor;
-    for(let i = n; i > 0; i--) {
-        last.style.backgroundColor = last.previousElementSibling.style.backgroundColor;
-        last = last.previousElementSibling;
+    const colorsLength = allColors.length - 1;
+    let changeColor, dummyColor;
+
+    let firstCard = container.firstElementChild;
+    changeColor = firstCard.style.backgroundColor;
+
+    for(let i = 0; i < colorsLength; i++) {
+        firstCard = firstCard.nextElementSibling;
+        dummyColor = firstCard.style.backgroundColor;
+        firstCard.style.backgroundColor = changeColor;
+        changeColor = dummyColor;
     }
-    last.style.backgroundColor = lastColor;
+    container.firstElementChild.style.backgroundColor = changeColor;
 }
 
 window.addEventListener("load", insertCards);
