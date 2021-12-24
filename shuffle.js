@@ -1,12 +1,15 @@
 const allColors = ["#FF0000", "#008000", "#FFFF00", "#0000FF"];
-const cards = `<div class="card-item container-margin" style="background-color: #FF0000"></div>
-    <div class="card-item container-margin" style="background-color: #008000"></div>
-    <div class="card-item container-margin" style="background-color: #0000FF"></div>
-    <div class="card-item container-margin" style="background-color: #FFFF00"></div>`;
 
 const insertCards = () => {
-    let cardContainer = document.querySelector(".card-container");
-    cardContainer.innerHTML = cards;
+    const container = document.createElement("div");
+    container.className = "card-container";
+    for(let i = 0; i < allColors.length; i++) {
+        let card = document.createElement("div");
+        card.className = "card-item container-margin";
+        card.style.backgroundColor = allColors[i];
+        container.appendChild(card);
+    }
+    document.body.insertBefore(container, document.body.firstElementChild);
 }
 
 const shuffleColors = () => {
