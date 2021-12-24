@@ -1,27 +1,33 @@
-const allColors = ["#FF0000", "#008000", "#FFFF00", "#0000FF"];
+const allColors = ["#FF0000", "#FB9A00", "#FFFF00", "#008000", "#0000FF", "#8700B1"];
 
-function addColors() {  
-    let card = document.querySelectorAll(".card-item");      
-    for(let i = 0; i < allColors.length/2; i++) {
-        card[i].style.backgroundColor = allColors[i];
+const insertCards = () => {
+    const container = document.createElement("div");
+    container.className = "card-container";
+    for(let i = 0; i < allColors.length; i++) {
+        let card = document.createElement("div");
+        card.className = "card-item container-margin";
+        card.style.backgroundColor = allColors[i];
+        container.appendChild(card);
     }
-    for(let j = allColors.length - 1; j >= allColors.length/2; j--) {
-        card[j].style.backgroundColor = allColors[allColors.length - j + 1];
-    }
-}
-    
-function shuffleColors() {
-    const n = allColors.length - 1;
-    let color = allColors[n];
-    for(let i = n; i > 0; i--) {
-        allColors[i] = allColors[i - 1]
-    }
-    allColors[0] = color;
-    addColors();
+    document.body.insertBefore(container, document.body.firstElementChild);
 }
 
-// const button = document.querySelector("button");
-// button.addEventListener("click", shuffleColors);
+const shuffleColors = () => {
+    const container = document.querySelector(".card-container");
+    const colorsLength = allColors.length - 1;
+    let changeColor, dummyColor;
 
-window.addEventListener("load", addColors);
+    let cardToChange = container.firstElementChild;
+    changeColor = cardToChange.style.backgroundColor;
+
+    for(let i = 0; i < colorsLength; i++) {
+        cardToChange = cardToChange.nextElementSibling;
+        dummyColor = cardToChange.style.backgroundColor;
+        cardToChange.style.backgroundColor = changeColor;
+        changeColor = dummyColor;
+    }
+    container.firstElementChild.style.backgroundColor = changeColor;
+}
+
+window.addEventListener("load", insertCards);
 
