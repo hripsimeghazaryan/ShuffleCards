@@ -17,13 +17,13 @@ const shuffleColors = () => {
     const colorsLength = allColors.length - 1;
     let changeColor, dummyColor;
 
-    let firstCard = container.firstElementChild;
-    changeColor = firstCard.style.backgroundColor;
+    let cardToChange = container.firstElementChild;
+    changeColor = cardToChange.style.backgroundColor;
 
     for(let i = 0; i < colorsLength; i++) {
-        firstCard = firstCard.nextElementSibling;
-        dummyColor = firstCard.style.backgroundColor;
-        firstCard.style.backgroundColor = changeColor;
+        cardToChange = cardToChange.nextElementSibling;
+        dummyColor = cardToChange.style.backgroundColor;
+        cardToChange.style.backgroundColor = changeColor;
         changeColor = dummyColor;
     }
     container.firstElementChild.style.backgroundColor = changeColor;
